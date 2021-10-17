@@ -11,9 +11,9 @@ app.secret_key = "secret"
 
 
 class CapacityAnalysisForm(FlaskForm):
-    sql_xl = FileField()
-    work_to = FileField()
-    orderbook = FileField()
+    sql_xl = FileField(label="ERP Query Results")
+    work_to = FileField(label="Work to List")
+    orderbook = FileField(label="Orderbook")
     mould_setup_mins = IntegerField(default=90)
     pre_mould_days = IntegerField(default=2)
     post_mould_days = IntegerField(default=9)
