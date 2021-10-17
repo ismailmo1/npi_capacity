@@ -1,19 +1,20 @@
 from flask import Flask, request
 from flask.templating import render_template
 from flask_wtf import FlaskForm
-from flask_wtf.file import FileField
+from flask_wtf.file import FileField, FileRequired
 
 app = Flask(__name__)
 app.debug = True
+app.secret_key = "secret"
 
 
 class UploadFileForm(FlaskForm):
     sql_xl = FileField()
     work_to = FileField()
-    orderbook = FileField
+    orderbook = FileField()
 
 
-@app.get("/")
+@app.route("/", methods=["GET", "POST"])
 def home():
     form = UploadFileForm()
     if form.validate_on_submit():
